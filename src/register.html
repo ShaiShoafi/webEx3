@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href= "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="../style.css">
+</head> 
+<body class="font-[Arial,sans-serif] bg-[#f0f0f0] flex items-center justify-center h-screen m-0 text-[#333]">
+    <div class="bg-white p-5 rounded-lg shadow-[0_0_10px_rgba(0,0,0,0.5)] w-75">
+        <h1 class="font-bold text-4xl mb-5 text-[#333]">Register</h1>
+            <form id="registerForm" action="/src/register.html" method="post">
+                <input type="text" id="userInput" placeholder="username" required class="w-full p-2.5 my-2.5 border border-[#ccc] rounded box-border text-[#333]" />
+                <input type="text" id="mailInput" placeholder="email" required class="w-full p-2.5 my-2.5 border border-[#ccc] rounded box-border text-[#333]" />
+                <input type="text" id="passInput" placeholder="password" required class="w-full p-2.5 my-2.5 border border-[#ccc] rounded box-border text-[#333]" />
+                <input type="text" id="confirmInput" placeholder="password confirmation" required class="w-full p-2.5 my-2.5 border border-[#ccc] rounded box-border text-[#333]" />
+
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" id="dateInput" required class="w-full p-2.5 my-2.5 border border-[#ccc] rounded box-border text-[#333]" />
+                
+                <div id="arithmetic-captcha-container" class="space-y-2">
+                    <label for="captcha-answer" class="block text-sm font-medium text-gray-700"> Solve the CAPTCHA: </label>
+                    <div class="flex items-center space-x-4">
+                        <span id="arithmetic-challenge" class="text-lg font-semibold text-gray-800">
+                            <button type="button" id="refresh-arithmetic-captcha" title="Refresh CAPTCHA">
+                                <img class="h-10" src="https://logosandtypes.com/wp-content/uploads/2024/01/recaptcha.svg" alt="CAPTCHA">
+                            </button>
+                        </span>
+                    </div>
+                    <input type="text" id="arithmetic-answer" name="arithmetic-answer" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter the answer">
+                    <p id="arithmetic-error" class="mt-1 text-sm text-red-500 hidden">Incorrect CAPTCHA answer.</p>
+                </div>
+
+                
+                <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded hover:bg-blue-600">Register</button>
+
+                <a href="login.html" class="block text-right mt-4 text-blue-500 hover:underline">Already have an account? Login</a>
+            </form>
+            <div id="registerMessage" class="mt-2 text-red-500 text-center text-sm"></div>
+
+    </div>
+    <script src="users.js"></script>
+    <script src="captcha.js"></script>
+</body>
+</html>
