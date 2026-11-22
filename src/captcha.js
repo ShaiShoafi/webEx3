@@ -3,15 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerMessage = document.getElementById('registerMessage');
     let isAdmin = true;
 
-    const arithmeticChallengeSpan = document.getElementById('captcha-challenge');
-    const arithmeticAnswerInput = document.getElementById('captcha-answer');
-    const refreshArithmeticCaptchaButton = document.getElementById('refresh-captcha');
+    //const arithmeticChallengeSpan = document.getElementById('captcha-challenge');
+    //const arithmeticAnswerInput = document.getElementById('captcha-answer');
+    //const refreshArithmeticCaptchaButton = document.getElementById('refresh-captcha');
     const arithmeticError = document.getElementById('arithmetic-error');
     const captchaAttemptsError = document.getElementById('captcha-attempts-error');
     let arithmeticNum1, arithmeticNum2, arithmeticExpectedAnswer;
     let incorrectAttempts = 0;
     const maxIncorrectAttempts = 3;
 
+
+    const arithmeticChallengeSpan = document.getElementById('arithmetic-challenge');
+    const refreshArithmeticCaptchaButton = document.getElementById('refresh-arithmetic-captcha');
+    const arithmeticAnswerInput = document.getElementById('arithmetic-answer');
 
     function generateArithmeticCaptcha() {
         //הגרלת 2 מספרים רנדומלים מ- 1 עד 10
@@ -20,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         /* אתחול אופרטור חישובי ע”י הגרלת מספר בין 1 ל- 0 ולפי בחירת חיבור 
         או חיסור */
         const operationID = Math.random()
-        const operation = ''
-        if(operation < 0.25) operation = '+'
-        else if(operation < 0.5) operation = '-'
-        else if(operation < 0.75) operation = '*'
+        let operation = ''
+        if(operationID < 0.25) operation = '+'
+        else if(operationID < 0.5) operation = '-'
+        else if(operationID < 0.75) operation = '*'
         else operation = '/'
 	    //חישוב התוצאה עבור חיבור
         if (operation === '+') {
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	    event.preventDefault();
 
         if (incorrectAttempts >= maxIncorrectAttempts) {
+            //@TODO we never really increase incorrectAttempts
             captchaAttemptsError.classList.remove('hidden');
             return;
         }

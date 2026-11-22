@@ -30,11 +30,9 @@ loginForm.addEventListener('submit', function(event) {
             role: user.role
         };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        if (user.role === 'admin') {
+        if (user.isAdmin === true) {
             window.location.href = 'userManagement.html';
-        }
-
-window.location.href = 'userManagement.html';
+        }   
 
         loginMessage.textContent = 'Login successful!';
         loginMessage.classList.remove('text-red-500');
